@@ -1,7 +1,5 @@
 (* Problem 1:
-
-   Write a function that takes two dates and evaluates to true or false. It evaluates to true if the first argument is a date that comes before the second argument.
-
+Write a function that takes two dates and evaluates to true or false. It evaluates to true if the first argument is a date that comes before the second argument.
 *)
 
 (* Algorithm *)
@@ -74,9 +72,7 @@ fun is_older(date1 : int*int*int, date2 : int*int*int)=
 
 	
 (* Problem 2:
-
-   Write a function that takes a list of dates and a month and return how many dates in the list are in the given month
-
+Write a function that takes a list of dates and a month and return how many dates in the list are in the given month
 *)
 
 (* Inputs: List of dates [(int*int*int) List] and a month (int) *)
@@ -86,13 +82,13 @@ fun is_older(date1 : int*int*int, date2 : int*int*int)=
 
 (* Examples:
 val dates = [(2012, 2, 28),(2013, 12, 1)]
-number_in_months(dates, 2) = 1
+number_in_month(dates, 2) = 1
 
 val dates = [(2012, 2, 28),(2013, 12, 1)]
-number_in_months(dates, 3) = 0
+number_in_month(dates, 3) = 0
 
 val dates = [(2012, 2, 28),(2013, 12, 1), (2013, 12, 24)]
-number_in_months(dates, 12) = 2
+number_in_month(dates, 12) = 2
  *)
 
 
@@ -108,12 +104,50 @@ number_in_months(dates, 12) = 2
 	
 (* Implementation *)
 
-fun number_in_months(dates: (int*int*int) list, month: int) =
+fun number_in_month(dates: (int*int*int) list, month: int) =
     if null dates
     then 0
     else
 	if #2(hd dates) = month
-	then 1 + number_in_months(tl dates, month)
-	else number_in_months(tl dates, month)
+	then 1 + number_in_month(tl dates, month)
+	else number_in_month(tl dates, month)
 
+
+
+(* Problem 3:
+Write a function that takes a list of dates and a list of months and returns the number of dates in the list of dates that are in any of the months in the list of months. Assume the list of months has no number repeated			    
+*)
+
+(* Inputs: List of dates [(int*int*int) List] with the format of (year, month, day) and a list of months (int list) *)
+
+(* Outputs: How many dates in the list are in the given list of dates *)
+	
+
+(* Examples:
+val dates = [(2024, 2, 28),(2013, 12, 1), (2024, 3, 10)]
+number_in_months(dates, [2, 3, 12]) = 3
+
+val dates = [(2012, 2, 28),(2013, 12, 1)]
+number_in_months(dates, [4, 6]) = 0
+
+val dates = [(2012, 2, 28),(2013, 12, 1), (2013, 12, 24)]
+number_in_months(dates, [2]) = 1
+ *)
+
+(* Algorithm *)
+
+(*
+1. Base Case: if the list of months is empty, the function returns 0, since there are no target months to check against
+2. Recursive case: 
+   -Call the number_in_month function to count the number of dates in the list that fall within the first month of the list of months
+   -Recursively call the number_in_months function on the rest of the list of dates and the rest of the list of months (excluding the first element) to continue counting for the remaining months
+*)
+
+(* Implementation *)
+
+fun number_in_months (dates: (int*int*int) list, months: int list) =
+    if null months
+    then 0
+    else
+	number_in_month(dates, hd months) + number_in_months(dates, tl months)
 
