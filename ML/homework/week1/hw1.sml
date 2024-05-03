@@ -70,7 +70,7 @@ fun is_older(date1 : int*int*int, date2 : int*int*int)=
     end
 
 
-	
+
 (* Problem 2:
 Write a function that takes a list of dates and a month and return how many dates in the list are in the given month
 *)
@@ -150,4 +150,5 @@ fun number_in_months (dates: (int*int*int) list, months: int list) =
     then 0
     else
 	number_in_month(dates, hd months) + number_in_months(dates, tl months)
+
 
