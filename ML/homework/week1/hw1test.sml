@@ -36,3 +36,13 @@ val test_dates_1_4 = dates_in_month(dates_test4, 4); (* Expected result: [(2024,
 val test_dates_2_4 = dates_in_month(dates_test4, 5); (* Expected result: [] *)
 val test_dates_3_4 = dates_in_month(dates_test4, 6); (* Expected result: [(2024, 6, 25)] *)
 
+
+(* Tests problem 5 *)
+
+val dates_test5 = [(2024, 4, 15), (2024, 5, 20), (2024, 6, 25), (2024, 7, 30)];
+
+val test_dates_1_5 = dates_in_months(dates_test5, [4, 6]); (* Expected result: [(2024, 4, 15), (2024, 6, 25)] *)
+val test_dates_2_5 = dates_in_months(dates_test5, []); (* Expected result: [] *)
+val test_dates_3_5 = dates_in_months(dates_test5, [7]); (* Expected result: [(2024, 7, 30)] *)
+
+
