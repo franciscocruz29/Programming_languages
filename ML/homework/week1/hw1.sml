@@ -62,3 +62,16 @@ fun dates_in_months (dates : (int*int*int) list, months : int list) =
     else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)
 
 
+
+(* Problem 6: Write a function that takes a list of strings and an int n and return the n^th element of the list where the head of the list is 1^st.*)
+
+fun get_nth (str : string list, n : int) =
+    if null (str)
+    then "n is out of bounds"
+    else
+	if n = 1
+	then hd str
+	else get_nth(tl str, n-1)
+
+
+

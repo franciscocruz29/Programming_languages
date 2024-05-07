@@ -2,11 +2,11 @@ use "hw1.sml";
 
 (* Tests problem 1 *)
 
-val test1 = is_older((2022, 3, 15), (2023, 7, 20)); (* Expected result: true *)
-val test2 = is_older((2025, 11, 5), (2024, 9, 18)); (* Expected result: false *)
-val test3 = is_older((2020, 2, 28), (2020, 5, 12)); (* Expected result: true *)
-val test4 = is_older((2018, 7, 10), (2018, 7, 15)); (* Expected result: true *)
-val test5 = is_older((2021, 9, 21), (2021, 9, 21)); (* Expected result: false *)
+val test1_1 = is_older((2022, 3, 15), (2023, 7, 20)); (* Expected result: true *)
+val test2_1 = is_older((2025, 11, 5), (2024, 9, 18)); (* Expected result: false *)
+val test3_1 = is_older((2020, 2, 28), (2020, 5, 12)); (* Expected result: true *)
+val test4_1 = is_older((2018, 7, 10), (2018, 7, 15)); (* Expected result: true *)
+val test5_1 = is_older((2021, 9, 21), (2021, 9, 21)); (* Expected result: false *)
 
 
 (* Tests problem 2*)
@@ -46,3 +46,8 @@ val test_dates_2_5 = dates_in_months(dates_test5, []); (* Expected result: [] *)
 val test_dates_3_5 = dates_in_months(dates_test5, [7]); (* Expected result: [(2024, 7, 30)] *)
 
 
+(* Tests problem 6 *)
+
+val test1_6 = get_nth(["a", "b", "c"], 1); (* Expected result: 'a' *)
+val test2_6 = get_nth(["a", "b", "c"], 3); (* Expected result: 'c' *)
+val test3_6 = get_nth(["a", "b", "c"], 4); (* Expected result: Error message *)
