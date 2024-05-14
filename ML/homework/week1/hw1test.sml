@@ -51,3 +51,12 @@ val test_dates_3_5 = dates_in_months(dates_test5, [7]); (* Expected result: [(20
 val test1_6 = get_nth(["a", "b", "c"], 1); (* Expected result: 'a' *)
 val test2_6 = get_nth(["a", "b", "c"], 3); (* Expected result: 'c' *)
 val test3_6 = get_nth(["a", "b", "c"], 4); (* Expected result: Error message *)
+
+
+(* Tests problem 7 *)
+
+val test1_7 = date_to_string((2022, 12, 4)); (* Expected result: "December 4, 2022" *)
+val test2_7 = date_to_string((2022, 1, 4)); (* Expected result: "January 4, 2022" *)
+
+
+
