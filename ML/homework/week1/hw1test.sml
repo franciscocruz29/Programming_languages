@@ -59,4 +59,10 @@ val test1_7 = date_to_string((2022, 12, 4)); (* Expected result: "December 4, 20
 val test2_7 = date_to_string((2022, 1, 4)); (* Expected result: "January 4, 2022" *)
 
 
+(* Test problem 8 *)
+
+val test1_8 = number_before_reaching_sum(10, [4, 2, 7, 3, 1]); (* Expected result: 2 *)
+val test2_8 = number_before_reaching_sum(8, [1, 2, 3, 4, 5]); (* Expected result: 3 *)
+val test3_8 = number_before_reaching_sum(5, [5, 5, 5, 5, 5]); (* Expected result: 0 *)
+
 
