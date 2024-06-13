@@ -66,3 +66,9 @@ val test2_8 = number_before_reaching_sum(8, [1, 2, 3, 4, 5]); (* Expected result
 val test3_8 = number_before_reaching_sum(5, [5, 5, 5, 5, 5]); (* Expected result: 0 *)
 
 
+(* Test problem 9 *)
+
+val test1_9 = what_month(1); (* Expected result: 1 *)
+val test2_9 = what_month(121); (* Expected result: 5 *)
+val test3_9 = what_month(334); (* Expected result: 11 *)
+val test4_9 = what_month(365); (* Expected result: 12 *)

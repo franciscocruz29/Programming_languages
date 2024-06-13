@@ -1,5 +1,4 @@
 (* Problem 1: Write a function that takes two dates and evaluates to true or false. It evaluates to true if the first argument is a date that comes before the second argument. *)
-
 fun is_older(date1 : int*int*int, date2 : int*int*int)=
     let
 	val year1 = #1 date1
@@ -91,3 +90,12 @@ fun number_before_reaching_sum (sum : int, number_list : int list) =
 
 
 		
+(* Problem 9: Write a function that takes a day of year (i.e., an int between 1 and 365) and returns what month that day is in (1 for January, 2 for February, etc) *)
+
+fun what_month (day : int) =
+    let val days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    in
+	number_before_reaching_sum(day, days_in_months) + 1
+    end
+
+
