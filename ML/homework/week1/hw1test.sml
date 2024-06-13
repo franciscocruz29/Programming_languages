@@ -72,3 +72,12 @@ val test1_9 = what_month(1); (* Expected result: 1 *)
 val test2_9 = what_month(121); (* Expected result: 5 *)
 val test3_9 = what_month(334); (* Expected result: 11 *)
 val test4_9 = what_month(365); (* Expected result: 12 *)
+
+
+(* Test problem 10 *)
+
+val test1_10 = month_rage(15, 17); (* Expected result: [1, 1, 1] *)
+val test2_10 = month_rage(59, 61); (* Expected result: [2, 3, 3] *)
+val test3_10 = month_rage(90, 92); (* Expected result:  [3, 4 ,4] *)
+val test4_10 = month_rage(200, 19); (* Expected result: [] *)
+
