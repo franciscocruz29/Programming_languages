@@ -100,7 +100,7 @@ fun what_month (day : int) =
 
 
 
-(* Write a function that takes two days of the year day1 and day2 and returns an int list [m1, m2, ..., mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have lenght day2 - day1 + 1 or length 0 if day1 > day2 *)
+(* Problem 10: Write a function that takes two days of the year day1 and day2 and returns an int list [m1, m2, ..., mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have lenght day2 - day1 + 1 or length 0 if day1 > day2 *)
 fun month_rage (day1 : int, day2 : int) =
     if day1 > day2
     then []
@@ -108,3 +108,24 @@ fun month_rage (day1 : int, day2 : int) =
 
 
 
+(* Problem 11: Write a function oldest that takes a list of dates and evaluates to an (int*int*int) option. It evaluates to NONE if the list has no dates and SOME d if the date d is the oldest date in the list *)
+
+fun oldest (dates : (int*int*int) list) =
+    if null dates
+    then NONE
+    else
+	let fun older_date (dates : (int*int*int) list) =
+		if null (tl dates)
+		then hd dates
+		else
+		    if is_older (hd dates, hd (tl dates))
+		    then if null (tl(tl dates))
+			 then  hd dates
+			 else older_date(hd dates::tl(tl dates))
+		    else older_date(tl dates)
+	in
+	    SOME (older_date(dates))
+	end
+
+
+		

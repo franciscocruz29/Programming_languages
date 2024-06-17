@@ -78,6 +78,15 @@ val test4_9 = what_month(365); (* Expected result: 12 *)
 
 val test1_10 = month_rage(15, 17); (* Expected result: [1, 1, 1] *)
 val test2_10 = month_rage(59, 61); (* Expected result: [2, 3, 3] *)
-val test3_10 = month_rage(90, 92); (* Expected result:  [3, 4 ,4] *)
+val test3_10 = month_rage(90, 92); (* Expected result: [3, 4 ,4] *)
 val test4_10 = month_rage(200, 19); (* Expected result: [] *)
+
+
+(* Test problem 11 *)
+
+val test1_11 = oldest([(2023, 6, 17), (2020, 1, 1), (2021, 12, 31)]); (* Expected result: SOME (2020, 1, 1) *)
+val test2_11 = oldest([(1999, 12, 31), (2000, 1, 1), (1980, 7, 4)]); (* Expected result: SOME (1980, 7, 4) *)
+val test3_11 = oldest([(2022, 5, 20)]); (* Expected result: SOME (2022, 5, 20) *)
+val test4_11 = oldest([]); (* Expected result: NONE*)
+
 
