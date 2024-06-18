@@ -101,7 +101,7 @@ fun what_month (day : int) =
 
 
 (* Problem 10: Write a function that takes two days of the year day1 and day2 and returns an int list [m1, m2, ..., mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2. Note the result will have lenght day2 - day1 + 1 or length 0 if day1 > day2 *)
-fun month_rage (day1 : int, day2 : int) =
+fun month_range (day1 : int, day2 : int) =
     if day1 > day2
     then []
     else what_month(day1)::month_rage(day1 + 1, day2)
@@ -126,6 +126,3 @@ fun oldest (dates : (int*int*int) list) =
 	in
 	    SOME (older_date(dates))
 	end
-
-
-		
