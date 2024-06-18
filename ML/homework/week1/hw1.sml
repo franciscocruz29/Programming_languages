@@ -1,4 +1,15 @@
 (* Problem 1: Write a function that takes two dates and evaluates to true or false. It evaluates to true if the first argument is a date that comes before the second argument. *)
+
+(* Algorithm:
+
+  1. Extract year, month, and day from both dates.
+  2. Compare the years
+  3. If the years are equal, compare the months
+  4. If both the years and the months are equal, compare the months
+  5. If none of the above conditions are true, return false
+
+*)
+
 fun is_older(date1 : int*int*int, date2 : int*int*int)=
     let
 	val year1 = #1 date1
