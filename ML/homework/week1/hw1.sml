@@ -52,14 +52,14 @@ fun number_in_month(dates : (int*int*int) list, month : int) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
-
+  1. Check if the months list is empty, if the list is empty, return 0 since there are no months to check against 
+  2. Otherwise, process the first month in the list:
+     2.1 Extract the first month from the list (This is the head of the list)
+     2.2 Compute the number of dates in dates that are in this month by calling number_in_month with dates and the first month.
+     2.3 Compute the number of dates in dates that are in the rest of the months (the tail of the list) by calling number_in_months with dates and the rest of the months.
+  3. Return the sum of the two values computed above.
 *)
-			    
+
 fun number_in_months (dates : (int*int*int) list, months : int list) =
     if null months
     then 0
