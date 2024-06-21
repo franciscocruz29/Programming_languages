@@ -63,6 +63,7 @@ fun number_in_month(dates : (int*int*int) list, month : int) =
      3.5 Add the count from the first month to the result of the recursive call.
   4. Repeat steps 2-3 until all months have been processed.
   5. The final sum is the total number of dates that fall in any of the given months.
+
 *)
 
 fun number_in_months (dates : (int*int*int) list, months : int list) =
@@ -77,11 +78,19 @@ fun number_in_months (dates : (int*int*int) list, months : int list) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. Check for empty list:
+     1.1 If it is, return an empty list
+  2. Extract head date and month:
+     2.1 It extracts the first element (head) of the dates list using hd
+     2.2 It then checks if the second element (month) of datesHead matches the provided month argument
+  3. Matching Month:
+     3.1 Add the entire head date to the beginning of a new list using the :: operator. This new list will eventually hold the filtered dates for the desired month.
+  4. Non-Matching Month:
+     4.1 Ignore the current date and moves on to the next one.
+  5. Building the Result:
+     5.1 With each recursive call, the function keeps adding matching dates to the beginning of the new list.
+     5.2 Eventually, when the function reaches the end of the original dates list (empty tail), all relevant dates will be included in the new list.
+     5.3 This new list, containing only dates from the original list that fall in the specified month and preserving their original order, is returned as the final result.
 
 *)
 
