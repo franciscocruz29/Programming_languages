@@ -111,11 +111,13 @@ fun dates_in_month (dates : (int*int*int) list, month : int) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. Checks if the months list is empty. If it is empty, the function returns an empty list
+  2. If months is not empty:
+     2.1 It extracts the first month from the months list using hd months.
+     2.2 It calls the function dates_in_month with dates and the first month as arguments to get the list of dates that are in this month.
+     2.3 It then concatenates (@) this list with the result of a recursive call to dates_in_months with the same dates list and the rest of the months list.
+  3. This process repeats recursively, processing one month at a time from the months list until the list is empty.
+  4. The final result is a list containing all dates that fall in any of the months specified in the months list.
 
  *)
 
