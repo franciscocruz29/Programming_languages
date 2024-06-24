@@ -132,11 +132,16 @@ fun dates_in_months (dates : (int*int*int) list, months : int list) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. Check if the input list str is empty. If it is empty, return the message "n is larger than list bounds".
+  2. If the list is not empty, check if n is equal to 1. If n is 1, return the first element (head) of the list.
+  3. If n is not 1, the function calls itself recursively with two modified arguments:
+     - The new list argument is the tail of the current list (all elements except the first one).
+     - The new n argument is decreased by 1.
+  4. This recursive process continues until either:
+     - The desired element is found (when n becomes 1).
+     - The list becomes empty (which means n was larger than the list length).
+
+  -- Note: This recursive approach effectively traverses the list until it reaches the desired position or determines that the list is too short to fulfill the request.
 
 *)
 
