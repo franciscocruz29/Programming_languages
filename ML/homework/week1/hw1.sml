@@ -176,11 +176,14 @@ fun date_to_string (date : (int*int*int)) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5.
+  1. If the first element of the list is itself greater than or equal to the target sum, it means this element alone is enough to reach or exceed the target sum. 
+     1.1 In this case, the function returns 0, indicating that no elements precede this element where the sum is less than the target.
+  2. If the first element is less than the target sum, the function continues iterating through the list. It performs the following steps:
+     2.1 Subtracts the first elementfrom the target sum to get the remaining target sum.
+     2.2 Calls itself recursively with the remaining target sum and the tail of the list, which excludes the first element.
+     2.3 Adds 1 to the result of the function call.
+
+  Note: The algorithm iterates through the list, keeping track of the cumulative sum. It stops at the point where adding the next element would exceed the target sum and returns the index before that point.
 
 *)
 	
