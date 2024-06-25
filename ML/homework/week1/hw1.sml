@@ -141,7 +141,7 @@ fun dates_in_months (dates : (int*int*int) list, months : int list) =
      - The desired element is found (when n becomes 1).
      - The list becomes empty (which means n was larger than the list length).
 
-  -- Note: This recursive approach effectively traverses the list until it reaches the desired position or determines that the list is too short to fulfill the request.
+  Note: This recursive approach effectively traverses the list until it reaches the desired position or determines that the list is too short to fulfill the request.
 
 *)
 
@@ -156,11 +156,11 @@ fun get_nth (str : string list, n : int) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5.
+  1. Create a list containing the names of all twelve months (January, February, etc.)
+  2. Extract the month number from the input date (second element of the tuple).
+  3. Extract the day from the input date (third element of the tuple).
+  4. Extract the year from the input date (first element of the tuple).
+  5. Combine the month name, the day string, and the year string into a single formatted string in the form "Month Day, Year".
 
 *)
 		 
