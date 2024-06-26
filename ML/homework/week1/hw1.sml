@@ -217,11 +217,15 @@ fun what_month (day : int) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. Check if day1 is greater than day2. 
+     1.1 If yes, the function returns an empty list ([]), indicating an invalid date range (day1 cannot be after day2).
+     2.2 If no, proceed with the following steps.
+  2. Call the what_month function with day1 as input. This gives you the month number for day1.
+  3. Recursively call the month_range function again with two arguments:
+     - day1 + 1: This represents the next day after day1.
+     - day2: This remains unchanged, representing the end day of the desired range.
+  4. The recursive call will continue until day1 reaches day2
+  5. The result of each recursive call (a list containing the month number) is prepended (using ::) to the list returned by the previous call. This builds the final list containing month numbers from day1 to day2
 
 *)
 
