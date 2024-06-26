@@ -193,19 +193,18 @@ fun number_before_reaching_sum (sum : int, number_list : int list) =
     else 1 + number_before_reaching_sum (sum - hd number_list, tl number_list)
 
 
-		
+
 (* Problem 9: Write a function that takes a day of year (i.e., an int between 1 and 365) and returns what month that day is in (1 for January, 2 for February, etc) *)
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. The function takes an integer day as input, representing a day of the year (between 1 and 365).
+  2. Create a list containing the number of days in each month for a non-leap year
+  3. Call the function named number_before_reaching_sum. It returns the number of complete months (i.e., the index in the list) before reaching the sum that exceeds the input day.
+  4. The result of number_before_reaching_sum is then incremented by 1. This is done because the result from number_before_reaching_sum is zero-indexed (0 for January, 1 for February, etc.)
 
 *)
-					
+
 fun what_month (day : int) =
     let val days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     in
