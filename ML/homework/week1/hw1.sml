@@ -240,12 +240,20 @@ fun month_range (day1 : int, day2 : int) =
 
 (* Algorithm:
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
-
+  1. Check if the input list of dates is empty
+     1.1 If it is empty, return NONE
+     1.2 If it is not empty, proceed to find the oldest value 
+  2. To find the oldest date, use a helper function called older_date:
+     2.1 If there's only one date in the list, return that date
+     2.2 If there are two or more dates:
+         2.2.1 Compare the first date with the second date
+         2.2.2 If the first date is older:
+	       2.2.2.1 If there are no more dates in the list, return the first date
+	       2.2.2.2 If there are more dates, recursively call older_date with a new list containing the first date and all dates after the second date
+         2.2.3 If the second date is older or the same age:
+               2.2.3.1 Recursively call older_date with the list excluiding the first date
+  3. Once the oldest date is found using older_date, wrap it in SOME and return it.
+  
 *)
 
 fun oldest (dates : (int*int*int) list) =
