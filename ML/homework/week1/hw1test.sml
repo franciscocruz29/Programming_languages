@@ -88,3 +88,13 @@ val test1_11 = oldest([(2023, 6, 17), (2020, 1, 1), (2021, 12, 31)]); (* Expecte
 val test2_11 = oldest([(1999, 12, 31), (2000, 1, 1), (1980, 7, 4)]); (* Expected result: SOME (1980, 7, 4) *)
 val test3_11 = oldest([(2022, 5, 20)]); (* Expected result: SOME (2022, 5, 20) *)
 val test4_11 = oldest([]); (* Expected result: NONE*)
+
+
+(* Test problem 12 *)
+
+val dates_test12 = [(2024, 4, 15), (2024, 5, 20), (2024, 6, 25), (2024, 7, 30)];
+
+val test_dates_1_12 = number_in_months_challenge(dates_test12, [4, 5, 6, 4, 5]); (* Expected result: 3 *)
+val test_dates_3_12 = number_in_months_challenge(dates_test12, [5, 7, 5, 7]); (* Expected result: 2 *)
+val test_dates_2_12 = number_in_months_challenge(dates_test12, [1, 2, 2]); (* Expected result: 0 *)
+
