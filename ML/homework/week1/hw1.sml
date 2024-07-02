@@ -292,3 +292,20 @@ fun oldest (dates : (int*int*int) list) =
   Note: By removing duplicates from the months list before counting, we ensure that having a month multiple times in the input has no more effect than having it once, which was the requirement of the challenge.  
 
  *)
+
+fun exist_in_list(value : int , list : int list) =
+    if null list 
+    then false
+    else if value = (hd list) 
+    then true
+    else exist_in_list(value, tl list)
+
+fun remove_duplicates(months : int list) =
+    if null months
+    then []
+    else if exist_in_list(hd months, tl months)
+    then remove_duplicates(tl months)
+    else (hd months) :: remove_duplicates(tl months)
+    
+fun number_in_months_challenge(dates : (int*int*int) list, months : int list) =
+    number_in_months(dates, remove_duplicates(months))
