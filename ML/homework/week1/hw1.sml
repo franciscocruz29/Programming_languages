@@ -272,3 +272,23 @@ fun oldest (dates : (int*int*int) list) =
 	in
 	    SOME (older_date(dates))
 	end
+
+
+
+(* Problem 12: Write functions number_in_months_challenge and dates_in_months_challenge that are like your solutions to problem 3 and 5 except having a month in the second argument multiple times has no more effect than having it once *)
+
+(* Algorithm for number_in_months_challenge:
+
+  1. The function number_in_months_challenge is defined. It takes two arguments:
+    - dates: a list of dates, where each date is represented as a tuple (int, int, int)
+    - months: a list of integers representing months
+  2. Inside number_in_months_challenge, we need that the function does the following:
+    a. It calls remove_duplicates on the months list to get a list of unique months.
+    b. It then calls number_in_months with the original dates list and the new list of unique months.
+  3. The remove_duplicates function removes duplicate elements from a list of months.
+  4. The exist_in_list function is a helper function that checks if a value exists in a list.
+  5. Once we have the list of unique months, number_in_months is called. 
+
+  Note: By removing duplicates from the months list before counting, we ensure that having a month multiple times in the input has no more effect than having it once, which was the requirement of the challenge.  
+
+ *)
