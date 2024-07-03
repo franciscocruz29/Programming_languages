@@ -90,11 +90,18 @@ val test3_11 = oldest([(2022, 5, 20)]); (* Expected result: SOME (2022, 5, 20) *
 val test4_11 = oldest([]); (* Expected result: NONE*)
 
 
-(* Test problem 12 *)
+(* Test problem 12a *)
 
-val dates_test12 = [(2024, 4, 15), (2024, 5, 20), (2024, 6, 25), (2024, 7, 30)];
+val dates_test12a = [(2024, 4, 15), (2024, 5, 20), (2024, 6, 25), (2024, 7, 30)];
 
-val test_dates_1_12 = number_in_months_challenge(dates_test12, [4, 5, 6, 4, 5]); (* Expected result: 3 *)
-val test_dates_3_12 = number_in_months_challenge(dates_test12, [5, 7, 5, 7]); (* Expected result: 2 *)
-val test_dates_2_12 = number_in_months_challenge(dates_test12, [1, 2, 2]); (* Expected result: 0 *)
+val test_dates_1_12 = number_in_months_challenge(dates_test12a, [4, 5, 6, 4, 5]); (* Expected result: 3 *)
+val test_dates_3_12 = number_in_months_challenge(dates_test12a, [5, 7, 5, 7]); (* Expected result: 2 *)
+val test_dates_2_12 = number_in_months_challenge(dates_test12a, [1, 2, 2]); (* Expected result: 0 *)
+
+(* Test problem 12b *)
+
+val test_dates_1_5 = dates_in_months_challenge(dates_test12a, [4, 6, 6, 4, 6]); (* Expected result: [(2024, 4, 15), (2024, 6, 25)] *)
+val test_dates_2_5 = dates_in_months_challenge(dates_test12a, []); (* Expected result: [] *)
+val test_dates_3_5 = dates_in_months_challenge(dates_test12a, [7, 7, 7, 7, 7]); (* Expected result: [(2024, 7, 30)] *)
+
 
