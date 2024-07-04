@@ -10,7 +10,7 @@
 
 *)
 
-fun is_older(date1 : int*int*int, date2 : int*int*int)=
+fun is_older(date1 : (int*int*int), date2 : (int*int*int))=
     let
 	val year1 = #1 date1
 	val month1 = #2 date1
@@ -312,3 +312,50 @@ fun number_in_months_challenge(dates : (int*int*int) list, months : int list) =
 
 fun dates_in_months_challenge(dates : (int*int*int) list, months : int list) =
     dates_in_months(dates, remove_duplicates(months))
+
+
+
+(* Problem 13: Write a function reasonable_date that takes a date and determines if it describes a real date in the common era. A "real date" has a positive year (year 0 did not exist), a month between 1 and 12, and a day appropriate for the month. Solutions should properly handle leap years.
+*)
+
+(* Algorithm:
+
+  1. Setting Up: 
+    1.1 Define a list called daysInMonth that holds the average number of days in each month.
+    1.2 Extracts the year, month, and day values from the date tuple.
+  2. It then checks the validity of the date through a series of conditions:
+    2.1. First, it checks if the year is valid (greater than 0).
+    2.2. If the year is valid, it checks if the month is valid (between 1 and 12).
+    2.3. If the month is valid, it checks if the day is within a possible range (1 to 31).
+    2.4. If the day is within this range, it checks for months with 30 days (April, June, September, November). If the day is 31 for these months, it returns false.
+    2.5. If the date hasn't been invalidated yet, it checks the February case:
+          If the day is greater than 28 and it's February:
+          It checks if it's the 29th and if it's a leap year.
+          A leap year is defined as a year divisible by 4 but not by 100, or divisible by 400.
+          If it's the 29th and a leap year, it returns true.
+          Otherwise, it returns false (as February can't have more than 29 days).
+    2.6. If none of the above conditions invalidate the date, it returns true.
+  3. Return false as soon as any invalid condition is met, and true only if all checks pass
+
+*)
+
+fun reasonable_date(date : int * int * int) =
+    let
+        val (year, month, day) = date
+        val daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+        fun is_leap_year(y) =
+            (y mod 400 = 0) orelse (y mod 4 = 0 andalso y mod 100 <> 0)
+
+        fun days_in_month(m, y) =
+            if m = 2 andalso is_leap_year(y) then 29
+            else List.nth(daysInMonth, m - 1)
+
+        fun is_valid_year(y) = y > 0
+        fun is_valid_month(m) = m >= 1 andalso m <= 12
+        fun is_valid_day(d, m, y) = d >= 1 andalso d <= days_in_month(m, y)
+    in
+        is_valid_year(year) andalso
+        is_valid_month(month) andalso
+        is_valid_day(day, month, year)
+    end
