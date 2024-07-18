@@ -92,15 +92,15 @@ fun number_in_months (dates : (int*int*int) list, months : int list) =
 *)
 
 fun dates_in_month (dates : (int*int*int) list, month : int) =
-    if null dates
-    then []
-    else
-	let val datesHead = hd dates
-	in
-	    if #2 datesHead = month
-	    then datesHead :: dates_in_month(tl dates, month) (* If the month matches, add the date to the result list *)
-	    else dates_in_month(tl dates, month)
-	end
+  if null dates
+  then []
+  else
+    let val datesHead = hd dates
+    in
+      if #2 datesHead = month
+      then datesHead :: dates_in_month(tl dates, month) (* If the month matches, add the date to the result list *)
+      else dates_in_month(tl dates, month)
+    end
 
 
 
