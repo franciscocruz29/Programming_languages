@@ -352,9 +352,9 @@ fun reasonable_date(date : int * int * int) =
       if m = 2 andalso is_leap_year(y) then 29
       else List.nth(daysInMonth, m - 1)
 
-      fun is_valid_year(y) = y > 0
-      fun is_valid_month(m) = m >= 1 andalso m <= 12
-      fun is_valid_day(d, m, y) = d >= 1 andalso d <= days_in_month(m, y)
+    fun is_valid_year(y) = y > 0
+    fun is_valid_month(m) = m >= 1 andalso m <= 12
+    fun is_valid_day(d, m, y) = d >= 1 andalso d <= days_in_month(m, y)
   in
       is_valid_year(year) andalso
       is_valid_month(month) andalso
