@@ -95,7 +95,8 @@ fun dates_in_month (dates : (int*int*int) list, month : int) =
   if null dates
   then []
   else
-    let val datesHead = hd dates
+    let 
+      val datesHead = hd dates
     in
       if #2 datesHead = month
       then datesHead :: dates_in_month(tl dates, month) (* If the month matches, add the date to the result list *)
@@ -162,10 +163,11 @@ fun get_nth (lst : string list, n : int) =
 *)
 		 
 fun date_to_string (date : (int*int*int)) =
-    let val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    in
-	get_nth(months, #2 date) ^ " " ^ Int.toString(#3 date) ^ ", " ^ Int.toString(#1 date)
-    end
+  let 
+    val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  in
+    get_nth(months, #2 date) ^ " " ^ Int.toString(#3 date) ^ ", " ^ Int.toString(#1 date)
+  end
 
 
 
@@ -185,9 +187,9 @@ fun date_to_string (date : (int*int*int)) =
 *)
 	
 fun number_before_reaching_sum (sum : int, number_list : int list) =
-    if hd number_list >= sum
-    then 0
-    else 1 + number_before_reaching_sum (sum - hd number_list, tl number_list)
+  if hd number_list >= sum
+  then 0
+  else 1 + number_before_reaching_sum (sum - hd number_list, tl number_list)
 
 
 
@@ -202,11 +204,12 @@ fun number_before_reaching_sum (sum : int, number_list : int list) =
 
 *)
 
-fun what_month (day : int) =
-    let val days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    in
-	number_before_reaching_sum(day, days_in_months) + 1
-    end
+fun what_month (day_of_year : int) =
+  let 
+    val month_lengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  in
+    1 + number_before_reaching_sum(day_of_year, month_lengths)
+  end
 
 
 
@@ -227,9 +230,9 @@ fun what_month (day : int) =
 *)
 
 fun month_range (day1 : int, day2 : int) =
-    if day1 > day2
-    then []
-    else what_month(day1)::month_range(day1 + 1, day2)
+  if day1 > day2
+  then []
+  else what_month(day1) :: month_range(day1 + 1, day2)
 
 
 
@@ -254,21 +257,22 @@ fun month_range (day1 : int, day2 : int) =
 *)
 
 fun oldest (dates : (int*int*int) list) =
-    if null dates
-    then NONE
-    else
-	let fun older_date (dates : (int*int*int) list) =
-		if null (tl dates)
-		then hd dates
-		else
-		    if is_older (hd dates, hd (tl dates))
-		    then if null (tl(tl dates))
-			 then  hd dates
-			 else older_date(hd dates::tl(tl dates))
-		    else older_date(tl dates)
-	in
-	    SOME (older_date(dates))
-	end
+  if null dates
+  then NONE
+  else
+  let 
+    fun older_date (dates : (int*int*int) list) =
+      if null (tl dates)
+      then hd dates
+      else
+        if is_older (hd dates, hd (tl dates))
+        then if null (tl(tl dates))
+        then  hd dates
+        else older_date(hd dates::tl(tl dates))
+        else older_date(tl dates)
+  in
+    SOME (older_date(dates))
+  end
 
 
 
@@ -291,24 +295,24 @@ fun oldest (dates : (int*int*int) list) =
  *)
 
 fun exist_in_list(value : int , list : int list) =
-    if null list 
-    then false
-    else if value = (hd list) 
-    then true
-    else exist_in_list(value, tl list)
+  if null list 
+  then false
+  else if value = (hd list) 
+  then true
+  else exist_in_list(value, tl list)
 
 fun remove_duplicates(months : int list) =
-    if null months
-    then []
-    else if exist_in_list(hd months, tl months)
-    then remove_duplicates(tl months)
-    else (hd months) :: remove_duplicates(tl months)
+  if null months
+  then []
+  else if exist_in_list(hd months, tl months)
+  then remove_duplicates(tl months)
+  else (hd months) :: remove_duplicates(tl months)
     
 fun number_in_months_challenge(dates : (int*int*int) list, months : int list) =
-    number_in_months(dates, remove_duplicates(months))
+  number_in_months(dates, remove_duplicates(months))
 
 fun dates_in_months_challenge(dates : (int*int*int) list, months : int list) =
-    dates_in_months(dates, remove_duplicates(months))
+  dates_in_months(dates, remove_duplicates(months))
 
 
 
@@ -337,22 +341,22 @@ fun dates_in_months_challenge(dates : (int*int*int) list, months : int list) =
 *)
 
 fun reasonable_date(date : int * int * int) =
-    let
-        val (year, month, day) = date
-        val daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  let
+    val (year, month, day) = date
+    val daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-        fun is_leap_year(y) =
-            (y mod 400 = 0) orelse (y mod 4 = 0 andalso y mod 100 <> 0)
+    fun is_leap_year(y) =
+      (y mod 400 = 0) orelse (y mod 4 = 0 andalso y mod 100 <> 0)
 
-        fun days_in_month(m, y) =
-            if m = 2 andalso is_leap_year(y) then 29
-            else List.nth(daysInMonth, m - 1)
+    fun days_in_month(m, y) =
+      if m = 2 andalso is_leap_year(y) then 29
+      else List.nth(daysInMonth, m - 1)
 
-        fun is_valid_year(y) = y > 0
-        fun is_valid_month(m) = m >= 1 andalso m <= 12
-        fun is_valid_day(d, m, y) = d >= 1 andalso d <= days_in_month(m, y)
-    in
-        is_valid_year(year) andalso
-        is_valid_month(month) andalso
-        is_valid_day(day, month, year)
-    end
+      fun is_valid_year(y) = y > 0
+      fun is_valid_month(m) = m >= 1 andalso m <= 12
+      fun is_valid_day(d, m, y) = d >= 1 andalso d <= days_in_month(m, y)
+  in
+      is_valid_year(year) andalso
+      is_valid_month(month) andalso
+      is_valid_day(day, month, year)
+  end
