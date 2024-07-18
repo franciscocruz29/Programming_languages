@@ -119,9 +119,9 @@ fun dates_in_month (dates : (int*int*int) list, month : int) =
  *)
 
 fun dates_in_months (dates : (int*int*int) list, months : int list) =
-    if null months
-    then []
-    else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)
+  if null months
+  then []
+  else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)
 
 
 
@@ -142,10 +142,10 @@ fun dates_in_months (dates : (int*int*int) list, months : int list) =
 
 *)
 
-fun get_nth (str : string list, n : int) =
-    if null str then "n is larger than list bounds"
-    else if n = 1 then hd str
-    else get_nth (tl str, n-1)
+fun get_nth (lst : string list, n : int) =
+  if null lst then "n is larger than list bounds"
+  else if n = 1 then hd lst
+  else get_nth (tl lst, n-1)
 
 
 
