@@ -112,18 +112,18 @@ Output: -1 - 2 - 3 - 4 = -10
 (* Step 5: Implementation *)
 fun alternate (numbers : int list) =
   let
-    fun alternate_helper (factor : int, numbers : int list, accumulated_sum : int) =
-      if null numbers
-      then accumulated_sum
+    fun alternate_helper (numbers : int list, factor : int, accumulated_sum : int) =
+      if null numbers then
+        accumulated_sum
       else 
         let
-          val head = hd numbers  
+          val head = hd numbers
           val tail = tl numbers
           val new_sum = accumulated_sum + (factor * head)
-          val new_factor = ~1 * factor
+          val new_factor = ~factor
         in
-          alternate_helper (new_factor, tail, new_sum)
+          alternate_helper (tail, new_factor, new_sum)
         end
   in
-    alternate_helper (1, numbers, 0)
+    alternate_helper (numbers, 1, 0)
   end
