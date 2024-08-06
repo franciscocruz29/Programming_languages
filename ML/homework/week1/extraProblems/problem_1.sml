@@ -109,7 +109,7 @@ Output: -1 - 2 - 3 - 4 = -10
 
 *)
 
-(* Step 5: Implementation *)
+(* Step 5: Implementation
 fun alternate (numbers : int list) =
   let
     fun alternate_helper (numbers : int list, factor : int, accumulated_sum : int) =
@@ -124,6 +124,20 @@ fun alternate (numbers : int list) =
         in
           alternate_helper (tail, new_factor, new_sum)
         end
+  in
+    alternate_helper (numbers, 1, 0)
+  end
+ *)
+
+(* Step 6: Refactoring *)
+
+fun alternate (numbers : int list) =
+  let
+    fun alternate_helper (nums, factor, sum) =
+      if null nums then
+        sum
+      else
+        alternate_helper (tl nums, ~factor, sum + (factor * (hd nums)))
   in
     alternate_helper (numbers, 1, 0)
   end
