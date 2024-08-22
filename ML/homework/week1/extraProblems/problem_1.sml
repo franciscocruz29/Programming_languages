@@ -146,19 +146,34 @@ fun alternate (numbers : int list) =
 
 (* Step 5: Imperative Implementation 
 
-from typing import List
+#include <stdio.h>
 
-def alternate(numbers: List[int]) -> int:
-    if not numbers:
-        return 0
-    
-    result: int = 0
-    sign: int = 1
-    
-    for num in numbers:
-        result += sign * num
-        sign *= -1
-    
-    return result
+int alternate(int *arr, int size) {
+    int result = 0;
+
+    for (int i = 0; i < size; i++) {
+        // Alternate the sign by using (-1) ^ i
+        result += arr[i] * ((i % 2 == 0) ? 1 : -1);
+    }
+
+    return result;
+}
+
+int main() {
+    // Test examples
+    int arr1[] = {};
+    int arr2[] = {7};
+    int arr3[] = {1, 2, 3};
+    int arr4[] = {1, 2, 3, 4};
+    int arr5[] = {-1, 2, -3, 4};
+
+    printf("Result 1: %d\n", alternate(arr1, 0));      // Output: 0
+    printf("Result 2: %d\n", alternate(arr2, 1));      // Output: 7
+    printf("Result 3: %d\n", alternate(arr3, 3));      // Output: 2
+    printf("Result 4: %d\n", alternate(arr4, 4));      // Output: -2
+    printf("Result 5: %d\n", alternate(arr5, 4));      // Output: -10
+
+    return 0;
+}
 
 *)
