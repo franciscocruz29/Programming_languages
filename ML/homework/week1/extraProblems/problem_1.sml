@@ -109,7 +109,8 @@ Output: -1 - 2 - 3 - 4 = -10
 
 *)
 
-(* Step 5: Implementation
+(* Step 5: Functional Implementation
+
 fun alternate (numbers : int list) =
   let
     fun alternate_helper (numbers : int list, factor : int, accumulated_sum : int) =
@@ -127,7 +128,8 @@ fun alternate (numbers : int list) =
   in
     alternate_helper (numbers, 1, 0)
   end
- *)
+
+*)
 
 (* Step 6: Refactoring *)
 
@@ -141,3 +143,22 @@ fun alternate (numbers : int list) =
   in
     alternate_helper (numbers, 1, 0)
   end
+
+(* Step 5: Imperative Implementation 
+
+from typing import List
+
+def alternate(numbers: List[int]) -> int:
+    if not numbers:
+        return 0
+    
+    result: int = 0
+    sign: int = 1
+    
+    for num in numbers:
+        result += sign * num
+        sign *= -1
+    
+    return result
+
+*)
