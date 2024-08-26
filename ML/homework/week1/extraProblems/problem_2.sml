@@ -56,7 +56,7 @@ Output: (~1, 123)
 
 *)
 
-(* Step 4: Implementation *)
+(* Step 4: Functional Implementation *)
 fun min_max (numbers : int list) =
   let
     fun find_min_max (min, max, remaining) =
@@ -102,7 +102,13 @@ void min_max(int arr[], int size, int *min, int *max) {
 
 int main() {
     int arr[] = {20, 5, 4, 123, 3, -1, 0, 100, 13};
-    int size = sizeof(arr) / sizeof(arr[0]); // It is used to calculate the number of elements in the array 
+
+    // It is used to calculate the number of elements in the array 
+    // sizeof(arr) would return 36 bytes (assuming 4 bytes per int and there are 9 integers).
+    // sizeof(arr[0]) would return 4 bytes.
+    // Therefore, n would be 36 / 4 = 9, which is the number of elements in the array.
+    int size = sizeof(arr) / sizeof(arr[0]); 
+
     int min, max;
 
     // &min means "address of min"
