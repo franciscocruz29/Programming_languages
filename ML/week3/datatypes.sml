@@ -38,3 +38,12 @@ val example_exp = eval (Add (Constant (10 + 9), Negate (Constant 4))); (* 15 *)
 
 val test_exp = Add (Constant (19), Negate (Constant 4));
 val nineteen = max_constant (test_exp); (* 19 *)
+
+type card = suit * rank
+
+fun is_Queen_of_Spades (c : card) =
+  #1 c = Spade andalso #2 c = Queen
+
+val c1 : card = (Diamond, Ace)
+val c2 : suit * rank = (Heart, Ace)
+val c3 = (Spade, Ace)
