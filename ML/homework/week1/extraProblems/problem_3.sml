@@ -94,8 +94,61 @@ fun cumsum (numbers : int list) =
 
 (* Step 5: What is the imperative algorithm 
 
-1.
+1. Initialize an empty result list to store the cumulative sums.
+2. Initialize a variable current_sum to 0. This will keep track of the running sum.
+3. Iterate through each number in the input list:
+   a. Add the current number to current_sum.
+   b. Append the current_sum to the result list.
+4. Return the result list.
 
 *)
 
-(* Step 6: Imperative Implementation *)
+(* Step 6: Imperative Implementation
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int *cumsum(int *numbers, int size) {
+    // Allocate memory for the result array 
+    int *result = (int *')malloc(size * sizeof(int)); 
+                       Remove ' to work
+    // Initialize the current sum
+    int current_sum = 0;
+
+    // Iterate through the input array
+    for (int i = 0; i < size; i++) {
+        // Add the current element to the current sum
+        current_sum += numbers[i];
+
+        // Store the current sum in the result array
+        result[i] = current_sum;
+    }
+
+    // Return the result array
+    return result;
+}
+
+int main() {
+    // Declare an array of numbers
+    int numbers[] = {1, 4, 20, 100};
+
+    // Calculate the size of the array
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    // Call the cumsum function to calculate the cumulative sums
+    int *cumulative_sums = cumsum(numbers, size);
+
+    // Print the cumulative sums
+    printf("Cumulative sums: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", cumulative_sums[i]);
+    }
+    printf("\n");
+
+    // Free the allocated memory
+    free(cumulative_sums);
+
+    return 0;
+}
+
+*)
