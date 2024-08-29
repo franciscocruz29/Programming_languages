@@ -1,6 +1,7 @@
 use "problem_1.sml";
 use "problem_2.sml";
 use "problem_3.sml";
+use "problem_4.sml";
 
 (* All tests should evaluate to true. *)
 
@@ -29,3 +30,9 @@ val test3_Problem_3 = cumsum([1, 4, 20]) = [1, 5, 25];
 val test4_Problem_3 = cumsum([1, 4, 20, 100]) = [1, 5, 25, 125];
 val test5_Problem_3 = cumsum([1, 4, 20, 100, 1000]) = [1, 5, 25, 125, 1125];
 val test6_Problem_3 = cumsum([1, ~2, 3, ~4]) = [1, ~1, 2, ~2];
+
+(* Tests problem 4 *)
+
+val test1_Problem_4 = greeting(NONE) = "Hello there, you!";
+val test2_Problem_4 = greeting(SOME "Bob") = "Hello there, Bob!";
+val test3_Problem_4 = greeting(SOME "Pepi") = "Hello there, Pepi!";
