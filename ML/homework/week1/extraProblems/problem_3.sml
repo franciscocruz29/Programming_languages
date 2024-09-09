@@ -73,7 +73,7 @@ Output: [1, ~1, 2, ~2]
 
 *)
 
-(* Step 4: Functional Implementation *)
+(* Step 4: Functional Implementation 
 
 fun cumsum (numbers : int list) =
   let
@@ -92,7 +92,24 @@ fun cumsum (numbers : int list) =
     helper(numbers, 0)
   end
 
-(* Step 5: What is the imperative algorithm 
+*)
+
+(* Step 5: Functional Implementation with pattern matching *)
+
+fun cumsum (numbers : int list) =
+  let
+    fun helper([], _) = []
+      | helper(x::xs, sum) =
+        let
+          val new_sum = x + sum
+        in
+          new_sum::helper(xs, new_sum)
+        end
+  in
+    helper(numbers, 0)
+  end
+
+(* Step 6: What is the imperative algorithm 
 
 1. Initialize an empty result list to store the cumulative sums.
 2. Initialize a variable current_sum to 0. This will keep track of the running sum.
@@ -103,15 +120,14 @@ fun cumsum (numbers : int list) =
 
 *)
 
-(* Step 6: Imperative Implementation
+(* Step 7: Imperative Implementation
 
 #include <stdio.h>
 #include <stdlib.h>
 
 int *cumsum(int *numbers, int size) {
-    // Allocate memory for the result array 
+    // Allocate memory for the result array; Remove ' to work
     int *result = (int *')malloc(size * sizeof(int)); 
-                       Remove ' to work
     // Initialize the current sum
     int current_sum = 0;
 
