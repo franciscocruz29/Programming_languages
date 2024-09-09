@@ -56,7 +56,8 @@ Output: (~1, 123)
 
 *)
 
-(* Step 4: Functional Implementation *)
+(* Step 4: Functional Implementation 
+
 fun min_max (numbers : int list) =
   let
     fun find_min_max (min, max, remaining) =
@@ -74,7 +75,26 @@ fun min_max (numbers : int list) =
     find_min_max (hd numbers, hd numbers, tl numbers)
   end
 
-(* Step 5: Imperative Implementation 
+*)
+
+(* Step 5: Functional Implementation with pattern matching *)
+
+fun min_max [] = raise Empty
+  | min_max (x::xs) =
+    let
+      fun find_min_max (min, max, []) = (min, max)
+        | find_min_max (min, max, y::ys) =
+          let
+            val newMin = if y < min then y else min
+            val newMax = if y > max then y else max
+          in
+            find_min_max (newMin, newMax, ys)
+          end
+    in
+      find_min_max (x, x, xs)
+    end
+
+(* Step 6: Imperative Implementation 
 
 #include <stdio.h>
 
