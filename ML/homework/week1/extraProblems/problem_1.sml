@@ -131,7 +131,7 @@ fun alternate (numbers : int list) =
 
 *)
 
-(* Step 6: Refactoring *)
+(* Step 6: Refactoring 
 
 fun alternate (numbers : int list) =
   let
@@ -144,7 +144,20 @@ fun alternate (numbers : int list) =
     alternate_helper (numbers, 1, 0)
   end
 
-(* Step 5: Imperative Implementation 
+*)
+
+(* Step 7: Functional implementation with pattern matching *)
+
+fun alternate (numbers : int list) =
+  let
+    fun alternate_helper ([], _, sum) = sum
+      | alternate_helper (head :: tail, factor, sum) =
+          alternate_helper (tail, ~factor, sum + (factor * head))
+  in
+    alternate_helper (numbers, 1, 0)
+  end
+
+(* Step 8: Imperative Implementation 
 
 #include <stdio.h>
 
