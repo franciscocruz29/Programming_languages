@@ -4,14 +4,14 @@ Write a function
 
     greeting : string option -> string
 
-that given a string option SOME name returns the string "Hello there, ...!" where the dots would be replaced by name. 
+that given a string option SOME name returns the string "Hello there, ...!" where the dots would be replaced by name.
 Note that the name is given as an option, so if it is NONE then replace the dots with "you".
 
 *)
 
-(* Step 1: Understand the problem 
+(* Step 1: Understand the problem
 
-What is the input? 
+What is the input?
 - A sring option (SOME name | NONE)
 
 What is the output?
@@ -50,5 +50,12 @@ Output: "Hello there, Bob!"
 
 (* Step 4: Functional implementation *)
 
+(* fun greeting (some_name : string option) =
+  "Hello there, " ^ (if isSome some_name then valOf some_name else "you") ^ "!" *)
+
+(* Step 5: Functional implementation with pattern matching *)
+
 fun greeting (some_name : string option) =
-  "Hello there, " ^ (if isSome some_name then valOf some_name else "you") ^ "!"
+  case some_name of
+    SOME name => "Hello there, " ^ name ^ "!"
+   | NONE => "Hello there, you!"
