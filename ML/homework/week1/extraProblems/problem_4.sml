@@ -59,3 +59,17 @@ fun greeting (some_name : string option) =
   case some_name of
     SOME name => "Hello there, " ^ name ^ "!"
    | NONE => "Hello there, you!"
+
+(* Step 6: Imperative Implementation
+
+#include <stdio.h>
+
+#define BUFFER_SIZE (100)
+
+void greeting(char *buffer, const char *name)
+{
+    const char *name_to_use = name ? name : "you";
+    snprintf(buffer, BUFFER_SIZE, "Hello there, %s!", name_to_use);
+}
+
+*)
